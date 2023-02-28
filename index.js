@@ -52,7 +52,7 @@ app.post('/fruits', (req, res) => {
      console.log("new entry")
 
      fruits.push(newFruit)
-            res.send(fruits)
+            res.status(201).send(fruits)
 })
 
 app.delete('/fruits', (req, res) => {
