@@ -76,5 +76,5 @@ app.patch('/fruits', (req, res) => {
 
 })
 
-modeule.exports = app
+module.exports = app
 
