@@ -41,7 +41,7 @@ app.post('/fruits', (req, res) => {
     for(let i=0;i<fruits.length;i++){
         if (fruits[i].name.toLowerCase() == newFruit.name.toLowerCase()){
             res.send('This fruit already exists')
-            fruitDoesntExist == false
+            return fruitDoesntExist == false
         }
     }
 
