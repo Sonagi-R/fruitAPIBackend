@@ -35,21 +35,21 @@ app.get('/fruits/:fruitName', (req, res) =>{
 app.post('/fruits', (req, res) => {
     const newFruit = req.body
     let fruitDoesntExist = true
+
     //looping through fruits array and updating existence variable if the fruit already exists
     for(let i=0;i<fruits.length;i++){
         if (fruits[i].name.toLowerCase() == newFruit.name.toLowerCase()){
             res.send('This fruit already exists')
-            return fruitDoesntExist == false
+            console.log("fruit exists")
+            fruitDoesntExist = false
         }
     }
     //if the fruit exists, update fruits array and return 201 status with array
     if(fruitDoesntExist){
         console.log(`${newFruit.name} was added to the fruits array`)
-        fruits.push(newFruit)
         res.status(201).send(fruits)
-        return fruits
+        return fruits.push(newFruit)
     }
-    return fruits
 })
 
 app.delete('/fruits', (req, res) => {
