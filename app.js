@@ -35,19 +35,32 @@ app.get('/fruits/:fruitName', (req, res) =>{
 
 app.post('/fruits', (req, res) => {
     const newFruit = req.body
+    let fruitDoesntExist = true
     console.log(req.body)
     
-    fruits.filter((fruit) => {
-        if(newFruit.name.toLowerCase() == fruit.name.toLowerCase()){
-            res.send("This fruit already exists")
-            res.end()
-        } 
-     })
+    for(let i=0;i<fruits.length;i++){
+        if (fruits[i].name.toLowerCase() == newFruit.name.toLowerCase()){
+            res.send('This fruit already exists')
+            fruitDoesntExist == false
+        }
+    }
 
-     console.log("new entry")
 
-     fruits.push(newFruit)
-            res.status(201).send(fruits)
+    if(fruitDoesntExist){
+        console.log("new entry")
+        fruits.push(newFruit)
+        res.status(201).send(fruits)
+    }
+    // fruits.filter((fruit) => {
+    //     if(newFruit.name.toLowerCase() == fruit.name.toLowerCase()){
+    //         res.send("This fruit already exists")
+    //     }
+
+    //     if(newFruit.name.toLowerCase() !== fruit.name.toLowerCase()){
+            
+    //     }
+        
+    //  })
 })
 
 app.delete('/fruits', (req, res) => {
