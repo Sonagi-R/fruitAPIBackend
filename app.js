@@ -45,7 +45,7 @@ app.post('/fruits', (req, res) => {
     //if the fruit exists, update fruits array and return 201 status with array
     if(fruitDoesntExist){
         console.log(`${newFruit.name} was added to the fruits array`)
-        fruits = fruits.push(newFruit)
+        fruits.push(newFruit)
         res.status(201).send(fruits)
         return fruits
     }
@@ -63,7 +63,7 @@ app.delete('/fruits', (req, res) => {
     //if newArray is empty or the same length as fruit array then no change was made, fruit doesnt exist
      if(newArray.length == 0|| newArray.length == fruits.length){
         res.send("The fruit does not exist")
-     } else {res.send(newArray)}    
+     } else {res.status(200).send(newArray)}    
 
 
      fruits = newArray
