@@ -40,7 +40,7 @@ app.post('/fruits', (req, res) => {
     for(let i=0;i<fruits.length;i++){
         if (fruits[i].name.toLowerCase() == newFruit.name.toLowerCase()){
             res.send('This fruit already exists')
-            console.log("fruit exists")
+            console.log("no fruit added, already in array")
             fruitDoesntExist = false
         }
     }
@@ -63,9 +63,11 @@ app.delete('/fruits', (req, res) => {
     //if newArray is empty or the same length as fruit array then no change was made, fruit doesnt exist
      if(newArray.length == 0|| newArray.length == fruits.length){
         res.send("The fruit does not exist")
-     } else {res.status(200).send(newArray)}    
-
-
+        console.log(`${deleteFruit} is not in array, cannot be deleted`)
+     } else {res.status(200).send(newArray)
+             console.log(`${deleteFruit.name} was removed from the array`)
+            }    
+            
      fruits = newArray
 })
 
