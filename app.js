@@ -35,6 +35,7 @@ app.get('/fruits/:fruitName', (req, res) =>{
 
 app.post('/fruits', (req, res) => {
     const newFruit = req.body
+    console.log(req.body)
     
     fruits.filter((fruit) => {
         if(newFruit.name.toLowerCase() == fruit.name.toLowerCase()){
